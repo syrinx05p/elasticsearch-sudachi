@@ -22,12 +22,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.lucene.analysis.Analyzer;
-import org.elasticsearch.index.analysis.AnalyzerProvider;
-import org.elasticsearch.index.analysis.TokenFilterFactory;
-import org.elasticsearch.index.analysis.TokenizerFactory;
-import org.elasticsearch.indices.analysis.AnalysisModule.AnalysisProvider;
-import org.elasticsearch.plugins.AnalysisPlugin;
-import org.elasticsearch.plugins.Plugin;
+import org.opensearch.index.analysis.AnalyzerProvider;
+import org.opensearch.index.analysis.TokenFilterFactory;
+import org.opensearch.index.analysis.TokenizerFactory;
+import org.opensearch.indices.analysis.AnalysisModule.AnalysisProvider;
+import org.opensearch.plugins.AnalysisPlugin;
+import org.opensearch.plugins.Plugin;
 
 import com.worksap.nlp.elasticsearch.sudachi.index.SudachiAnalyzerProvider;
 import com.worksap.nlp.elasticsearch.sudachi.index.SudachiBaseFormFilterFactory;

@@ -20,11 +20,11 @@ import java.io.IOException;
 import java.util.Set;
 
 import org.apache.lucene.analysis.CharArraySet;
-import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.env.Environment;
-import org.elasticsearch.index.IndexSettings;
-import org.elasticsearch.index.analysis.AbstractIndexAnalyzerProvider;
-import org.elasticsearch.index.analysis.Analysis;
+import org.opensearch.common.settings.Settings;
+import org.opensearch.env.Environment;
+import org.opensearch.index.IndexSettings;
+import org.opensearch.index.analysis.AbstractIndexAnalyzerProvider;
+import org.opensearch.index.analysis.Analysis;
 
 import com.worksap.nlp.lucene.sudachi.ja.SudachiAnalyzer;
 import com.worksap.nlp.sudachi.Tokenizer.SplitMode;

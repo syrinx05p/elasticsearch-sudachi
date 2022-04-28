@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.elasticsearch.ElasticsearchException;
+import org.opensearch.OpenSearchException;
 
 public class SudachiSettingsReader {
 
@@ -44,10 +44,10 @@ public class SudachiSettingsReader {
                 return null;
             }
         } catch (FileNotFoundException e) {
-            throw new ElasticsearchException(
+            throw new OpenSearchException(
                     "Sudachi Settings File not found: '" + path + "'.", e);
         } catch (IOException e) {
-            throw new ElasticsearchException(
+            throw new OpenSearchException(
                     "Fail to load Sudachi Settings File.", e);
         }
     }

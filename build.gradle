@@ -14,11 +14,13 @@ tasks.withType(JavaCompile) {
 
 repositories {
     mavenCentral()
+    maven { url "https://plugins.gradle.org/m2/" }
+    maven { url "https://aws.oss.sonatype.org/content/repositories/snapshots" }
 }
 
 dependencies {
-    implementation 'com.worksap.nlp:sudachi:0.5.3', "org.elasticsearch.client:transport:${elasticsearchVersion}"
-    testImplementation "org.elasticsearch.test:framework:${elasticsearchVersion}"
+    implementation 'com.worksap.nlp:sudachi:0.5.3', "org.opensearch.client:transport:${opensearchVersion}"
+    testImplementation "org.opensearch.test:framework:${opensearchVersion}"
     testRuntimeOnly "org.apache.logging.log4j:log4j-core:2.17.1"
 }
 
@@ -33,7 +35,7 @@ test.dependsOn buildTestDict
 def embedVersion = tasks.register('embedVersion', Copy) {
     from 'src/main/extras/plugin-descriptor.properties'
     into 'build/descriptor'
-    expand([version: version, elasticsearchVersion: elasticsearchVersion])
+    expand([version: version, opensearchVersion: opensearchVersion])
 }
 
 def copyDependencies = tasks.register('copyDependencies', Copy) {
@@ -45,7 +47,7 @@ def copyDependencies = tasks.register('copyDependencies', Copy) {
 def distZip = tasks.register('distZip', Zip) {
     dependsOn 'jar', embedVersion, copyDependencies
     archiveBaseName = archivesBaseName
-    archiveAppendix = elasticsearchVersion
+    archiveAppendix = opensearchVersion
     from 'build/libs/', 'build/descriptor', 'LICENSE', 'README.md'
 }
 
@@ -54,11 +56,11 @@ artifacts {
 }
 
 sonarqube {
-  properties {
-    property "sonar.projectKey", "WorksApplications_elasticsearch-sudachi"
-    property "sonar.organization", "worksapplications"
-    property "sonar.host.url", "https://sonarcloud.io"
-  }
+    properties {
+        property "sonar.projectKey", "WorksApplications_elasticsearch-sudachi"
+        property "sonar.organization", "worksapplications"
+        property "sonar.host.url", "https://sonarcloud.io"
+    }
 }
 
 jacocoTestReport {
