@@ -33,9 +33,10 @@ def buildTestDict = tasks.register('buildTestDict', JavaExec) {
 test.dependsOn buildTestDict
 
 def embedVersion = tasks.register('embedVersion', Copy) {
+    def normalizedOpenSearchVersion = opensearchVersion.split("-")[0]
     from 'src/main/extras/plugin-descriptor.properties'
     into 'build/descriptor'
-    expand([version: version, opensearchVersion: opensearchVersion])
+    expand([version: version, opensearchVersion: normalizedOpenSearchVersion])
 }
 
 def copyDependencies = tasks.register('copyDependencies', Copy) {
